@@ -35,6 +35,17 @@ class TodoList extends Component
 
     }
 
+    public function delete(Todo $todo)  
+    {
+        $todo->delete();
+    }
+
+    public function toggle(Todo $todo)  
+    {
+        $todo->completed = !$todo->completed;
+        $todo->save();   
+    }
+
     public function render()
     {
         $todos = Todo::latest()->where('name','like',"%{$this->search}%")->paginate(5);
@@ -43,8 +54,5 @@ class TodoList extends Component
         ]);
     }
 
-    public function delete(Todo $todo)  
-    {
-        $todo->delete();
-    }
+   
 }
