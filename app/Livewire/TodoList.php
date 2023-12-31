@@ -42,4 +42,9 @@ class TodoList extends Component
             'todos' => $todos
         ]);
     }
+
+    public function delete(Todo $todo)  
+    {
+        $todo->delete();
+    }
 }
